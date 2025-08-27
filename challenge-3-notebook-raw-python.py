@@ -57,7 +57,7 @@ Create the dataset.
 # %%bigquery forecast_output
 # CREATE OR REPLACE TABLE
 # `qwiklabs-gcp-01-a7e68aa7e5b0.challenge_3_dataset.forecast_output` AS (
-# SELECT *
+# SELECT ml_generate_text_result['candidates'][0]['content']["parts"][0]["text"] AS generated_text, *
 # FROM
 # ML.GENERATE_TEXT(
 # MODEL `challenge_3_dataset.gemini_model`,
@@ -68,7 +68,7 @@ Create the dataset.
 #    FROM `qwiklabs-gcp-01-a7e68aa7e5b0.challenge_3_dataset.wx_data`
 # ),
 # STRUCT(
-#    0.2 AS temperature, TRUE AS flatten_json_output, 1000 AS max_output_tokens)));
+#    0.2 AS temperature, 1000 AS max_output_tokens)));
 
 """Example output:
 
